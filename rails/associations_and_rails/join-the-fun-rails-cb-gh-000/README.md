@@ -29,3 +29,5 @@ Run the tests using the `rspec` or `learn` command.
 * [Active Record Associations: Join Table section](http://guides.rubyonrails.org/association_basics.html#the-has-many-through-association)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/join-the-fun-rails' title='Join the Fun'>Join the Fun</a> on Learn.co and start learning to code for free.</p>
+
+## hi hayden test!
