@@ -1,0 +1,39 @@
+<h2> Create a new figure! </h2>
+
+<form method="POST" action="/figures">
+
+  <!-- figure name  -->
+  <h3> Name your figure </h3>
+  <label for="figure_name"> Name </label>
+  <input type="text" id="figure_name" name="figure[name]"> </input><br><br>
+
+  <!-- landmark checkboxes, add ids of landmarks to params hash if checked -->
+  <h3> Select NYC landmarks associated with your figure </h3>
+  <% Landmark.all.each do |landmark| %>
+    <label><%= landmark.name %></label>
+    <input type="checkbox" name="figure[landmark_ids][]" value="<%= landmark.id %>"
+    id="landmark_<%= landmark.id %>"> <br>
+  <% end %>
+
+  <!-- title checkboxes, add ids of titles to params hash if checked -->
+  <h3> Select honorific titles associated with your figure </h3>
+  <% Title.all.each do |title| %>
+    <label><%= title.name %></label>
+    <input type="checkbox" name="figure[title_ids][]" value="<%= title.id %>"
+    id="title_<%= title.id %>"> <br>
+  <% end %>
+
+  <!-- Create a brand new landmark for your figure  -->
+  <h3> Create a brand new landmark for your figure </h3>
+  <label for="new_landmark"> Name </label>
+  <input type="text" id="new_landmark" name="landmark[name]"> </input><br><br>
+
+  <!-- Create a brand new title for your figure  -->
+  <h3> Create a brand new title for your figure </h3>
+  <label for="new_title"> Name </label>
+  <input type="text" id="new_title" name="title[name]"> </input><br><br>
+
+
+  <input type="submit" value="Create New Figure">
+
+</form>

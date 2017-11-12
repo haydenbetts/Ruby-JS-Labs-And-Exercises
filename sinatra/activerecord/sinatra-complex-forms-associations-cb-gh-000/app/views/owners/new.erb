@@ -1,0 +1,33 @@
+<h1>Create a new Owner</h1>
+
+<form action="/owners" method="POST">
+  <label>Name:</label>
+
+  <br></br>
+
+  <input type="text" name="owner[name]" id="owner_name">
+
+  <br></br>
+
+  <%@pets.each do |pet|%>
+    <!-- the final array in name="owner[pet_ids][]"
+       allows multiple entires to correspond to the
+       pet_ids key. w/o this only one is allowed... -->
+    <input type="checkbox" name="owner[pet_ids][]" value="<%=pet.id%>" id="<%=pet.id%>"><%= pet.name %></input>
+  <%end%>
+
+  <br></br>
+
+  <!-- make it possible to create a new pet and associate it w the owner
+
+
+-->
+  <label>Create a new pet for your owner:</label>
+
+  <input type="text" name="pet[name]"></input>
+
+
+  <br></br>
+
+  <input type="submit" value="Create Owner">
+</form>
