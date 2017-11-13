@@ -33,3 +33,13 @@ has_many :listings, :foreign_key => 'host_id'
 [Foreign key and Class Name AR class methods](http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/flatiron-bnb-associations' title='Flatiron-bnb: Associations'>Flatiron-bnb: Associations</a> on Learn.co and start learning to code for free.</p>
+
+## What I learned
+
+This lab focused on how you can do things like use one User model to define two different types of users.
+In this case, "hosts" and "guests." We distinguish the two by putting a host_id or guest_id column in
+the table of a model that belongs to a guest a guest or host. We then do the aliasing to the User model
+using activerecord macros.
+
+This lab also showed that setting up a 6 model domain is very time consuming... and practically requires
+tests. This took 2 hours even with pre-written tests...
