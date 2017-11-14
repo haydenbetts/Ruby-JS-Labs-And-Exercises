@@ -20,6 +20,16 @@ class Listing < ActiveRecord::Base
   before_destroy :convert_owner_to_guest
   
   
+  def average_review_rating
+    
+    ratings = self.reviews.collect do |review| 
+      review.rating
+    end
+    
+    average = ratings.sum.to_f / ratings.size.to_f
+      
+  end
+  
   private
 
   # TODO not working  
@@ -29,7 +39,8 @@ class Listing < ActiveRecord::Base
   end
   
   def convert_owner_to_guest
-    # check if this is this only listing
+    # TODO this is kind of an indirect way of proving that this is the only 
+    # remaining listing
     if self.host.listings.count == 1
       self.host.host = false
       self.host.save
