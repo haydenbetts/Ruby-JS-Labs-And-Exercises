@@ -48,8 +48,7 @@ class City < ActiveRecord::Base
   end
   
   def self.most_res
-      cities_sorted = City.all.sort_by {|city| city.reservations.count}
-      cities_sorted.last
+      City.all.max_by {|city| city.reservations.count}
   end
   
 end
