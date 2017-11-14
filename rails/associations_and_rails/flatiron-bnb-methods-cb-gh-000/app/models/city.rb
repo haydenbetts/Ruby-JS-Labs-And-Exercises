@@ -1,6 +1,7 @@
 class City < ActiveRecord::Base
   has_many :neighborhoods
   has_many :listings, :through => :neighborhoods
+  has_many :reservations, :through =>  :listings
 
   # TODO it is possible that this is working well and that I
   # am just running into some RSPEC parsing trouble. It is also possible
@@ -19,11 +20,11 @@ class City < ActiveRecord::Base
         date_co = reservation.checkout
       
         if date_ci < date_1_parsed && date_co > date_2_parsed
-          return true
+           true
         elsif date_ci > date_1_parsed && date_ci < date_2_parsed
-          return true
+           true
         elsif date_co > date_1_parsed && date_co < date_2_parsed
-          return true
+           true
         end
      end
      
@@ -32,10 +33,23 @@ class City < ActiveRecord::Base
      end
   end
      return open_listings
-end
+  end
   
   def date_parser(date)
     Date.strptime(date, '%Y-%m-%d')
+  end
+  
+  def self.highest_ratio_res_to_listings
+    
+    City.all.max_by do |city|
+      city.reservations.count / city.listings.count 
+    end
+  
+  end
+  
+  def self.most_res
+      cities_sorted = City.all.sort_by {|city| city.reservations.count}
+      cities_sorted.last
   end
   
 end
