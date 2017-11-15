@@ -8,13 +8,8 @@ class Listing < ActiveRecord::Base
   has_many :guests, :class_name => "User", :through => :reservations
   
   # validations
-  validates :address, presence: true
-  validates :listing_type, presence: true
-  validates :title, presence: true
-  validates :description, presence: true
-  validates :price, presence: true
-  validates :neighborhood, presence: true
-
+  validates_presence_of :address, :listing_type, :title, :description, :price, :neighborhood
+ 
   # TODO not working
   before_create :convert_owner_to_host
   before_destroy :convert_owner_to_guest

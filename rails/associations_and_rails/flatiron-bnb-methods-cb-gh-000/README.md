@@ -62,3 +62,15 @@ The same class/instance methods as your `City` object. Maybe there is a way they
 <a href='https://learn.co/lessons/flatiron-bnb-methods' data-visibility='hidden'>View this lesson on Learn.co</a>
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/flatiron-bnb-methods'>Flatiron BnB Methods Lab</a> on Learn.co and start learning to code for free.</p>
+
+## What I learned
+
+In rails instead of puttings modules in the lib directory, you can put them in models/concerns.
+Then you extend them to some activerecord wrapper. Then you can include them in whatever
+activerecord models you want.
+
+##  TODO
+Currently have these two methods copied verbatim in neighborhood and city classes:
+
+self.highest_ratio_res_to_listings
+self.most_res
