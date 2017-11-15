@@ -52,8 +52,7 @@ class Reservation < ActiveRecord::Base
   end
   
   def listing_available?
-    # TODO use consistent parsing
-     if !self.listing.listing_available?(self.checkin,self.checkout)
+     if !self.listing.listing_available?(self.checkin_parsed,self.checkout_parsed)
        errors.add(:checkin, "The listing is not avaiable when you want it")
      end
    end

@@ -27,10 +27,11 @@ class Listing < ActiveRecord::Base
   end
   
   # TODO refactor this
-  def listing_available?(date_1, date_2)
+  def listing_available?(date_1_parsed, date_2_parsed)
         
-        date_1_parsed = date_parser(date_1.to_s)
-        date_2_parsed = date_parser(date_2.to_s)
+        # going to try performing parsing outside 
+        # date_1_parsed = date_parser(date_1.to_s)
+        # date_2_parsed = date_parser(date_2.to_s)
         
     self.reservations.each do |reservation|
          
