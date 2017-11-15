@@ -6,7 +6,7 @@ class Reservation < ActiveRecord::Base
 
   # activerecord validations
   validates_presence_of :checkin, :checkout
-  validate :guest_does_not_own_listing, :ci_before_co
+  validate :guest_does_not_own_listing, :ci_before_co, :listing_available?
   # validates :guest, presence: true
   # validates :listing, presence: true
   # validates :review, presence: true
@@ -22,8 +22,16 @@ class Reservation < ActiveRecord::Base
     self.duration * self.listing.price
   end
   
+  def checkin_parsed
+    date_parser(self.checkin.to_s)
+  end
+  
+  def checkout_parsed
+    date_parser(self.checkout.to_s)
+  end
   
   private
+  
     
   def guest_does_not_own_listing
     
@@ -34,19 +42,20 @@ class Reservation < ActiveRecord::Base
     end
   end
   
-  def listing_available
-  end
-  
   def ci_before_co
     
-      checkin = date_parser(self.checkin.to_s)
-      checkout = date_parser(self.checkout.to_s)
-    
-    if checkin > checkout
+    if self.checkin_parsed > self.checkout_parsed
       errors.add(:checkin, "Your checkin date must be before your checkout date")
-    elsif checkin == checkout
+    elsif self.checkin_parsed == self.checkout_parsed
       errors.add(:checkin, "Your checkin and checkout dates must be different")
     end
   end
+  
+  def listing_available?
+    # TODO use consistent parsing
+     if !self.listing.listing_available?(self.checkin,self.checkout)
+       errors.add(:checkin, "The listing is not avaiable when you want it")
+     end
+   end
 
 end

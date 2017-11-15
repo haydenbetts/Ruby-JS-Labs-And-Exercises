@@ -14,6 +14,7 @@ class Listing < ActiveRecord::Base
   before_create :convert_owner_to_host
   before_destroy :convert_owner_to_guest
   
+  include Reservable
   
   def average_review_rating
     
@@ -25,6 +26,29 @@ class Listing < ActiveRecord::Base
       
   end
   
+  # TODO refactor this
+  def listing_available?(date_1, date_2)
+        
+        date_1_parsed = date_parser(date_1.to_s)
+        date_2_parsed = date_parser(date_2.to_s)
+        
+    self.reservations.each do |reservation|
+         
+        date_ci = date_parser(reservation.checkin.to_s)
+        date_co = date_parser(reservation.checkout.to_s)
+      
+        if date_ci < date_1_parsed && date_co > date_2_parsed
+           return false
+        elsif date_ci > date_1_parsed && date_ci < date_2_parsed
+           return false
+        elsif date_co > date_1_parsed && date_co < date_2_parsed
+           return false
+        end
+     end
+      true
+    end
+    
+
   private
 
   # TODO not working  
