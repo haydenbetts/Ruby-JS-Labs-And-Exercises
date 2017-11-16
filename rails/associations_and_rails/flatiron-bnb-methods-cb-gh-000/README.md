@@ -74,3 +74,6 @@ Currently have these two methods copied verbatim in neighborhood and city classe
 
 self.highest_ratio_res_to_listings
 self.most_res
+
+Running into trouble because rails runs every validation by default (even if an early one fails)
+Looking for workarounds for this behavior.
