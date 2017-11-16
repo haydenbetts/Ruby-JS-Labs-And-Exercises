@@ -5,7 +5,10 @@ class Reservation < ActiveRecord::Base
   has_one :review
 
   # activerecord validations
-  validates_presence_of :checkin, :checkout
+  # TODO for some reason some part of this class is running before validation of
+  # checkin and checkout
+  validates :checkin, :checkout, presence: true
+  
   validate :guest_does_not_own_listing, :ci_before_co, :listing_available?
   # validates :guest, presence: true
   # validates :listing, presence: true
@@ -21,7 +24,7 @@ class Reservation < ActiveRecord::Base
   def total_price
     self.duration * self.listing.price
   end
-  
+
   def checkin_parsed
     date_parser(self.checkin.to_s)
   end
