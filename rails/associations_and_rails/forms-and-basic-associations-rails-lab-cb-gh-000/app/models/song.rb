@@ -8,9 +8,7 @@ class Song < ActiveRecord::Base
   end
 
   def genre_name
-    if self.genre
-      self.genre.name
-    end
+    self.try(:genre).try(:name)
   end
 
   def artist_name=(name)
@@ -18,9 +16,7 @@ class Song < ActiveRecord::Base
   end
 
   def artist_name
-    if self.artist
-      self.artist.name
-    end
+    self.try(:artist).try(:name)
   end
 
   def note_contents
