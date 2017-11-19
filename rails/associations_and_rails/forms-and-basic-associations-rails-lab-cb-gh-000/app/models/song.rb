@@ -20,23 +20,18 @@ class Song < ActiveRecord::Base
   end
 
   def note_contents
-    if self.notes
-      self.notes.collect do |note|
+      self.notes.try(:collect) do |note|
         note.content
       end
-    end
   end
 
   def note_contents=(notes_contents)
 
-    if notes_contents
-      notes_contents.each do |content|
+      notes_contents.try(:each) do |content|
         if content != ""
           self.notes << Note.create(content: content)
         end
       end
-    end
-
   end
 
 end
