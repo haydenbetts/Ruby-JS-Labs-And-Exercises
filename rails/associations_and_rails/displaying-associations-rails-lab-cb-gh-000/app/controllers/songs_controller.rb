@@ -1,4 +1,6 @@
 class SongsController < ApplicationController
+  belongs_to :artist
+  
   def index
   end
 
