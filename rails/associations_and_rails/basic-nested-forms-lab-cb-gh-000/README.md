@@ -32,3 +32,6 @@ Build a recipe form that accepts two ingredients! It should automatically create
 
 Learned that you have to build each attribute that you want to nest before you can
 get them to show up in a form field. 
+
+Finally reading an introduction to strong params whitelisting.
+
