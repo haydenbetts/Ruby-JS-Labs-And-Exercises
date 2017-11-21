@@ -1,0 +1,6 @@
+Name: <%= @doctor.name %>
+Department: <%= @doctor.department %>
+
+<% if false>
+    <%= collection_select(:doctor, :patient_id, Patient.all, :id, :name) %>
+<% end %>
