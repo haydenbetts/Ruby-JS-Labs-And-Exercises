@@ -2,6 +2,8 @@ Name: <%= @doctor.name %>
 Department: <%= @doctor.department %>
 
 
-<% @doctor.appointments.each do |appointment|>
-    <%= make_appointment_human_readable(appointment_datetime) %>
+<% @doctor.appointments.each do |appointment| %>
+    Patient: <%= link_to appointment.patient.name, appointment.patient %>
+    Appointment time: <%= make_appointment_human_readable(appointment.appointment_datetime) %>
 <% end %>
+    

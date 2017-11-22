@@ -1,0 +1,5 @@
+<% @patient.appointments.each do |appointment| %>
+    Doctor: <%= link_to appointment.doctor.name, appointment.doctor %>
+    Appointment time: <%= make_appointment_human_readable(appointment.appointment_datetime) %>
+<% end %>
+    
