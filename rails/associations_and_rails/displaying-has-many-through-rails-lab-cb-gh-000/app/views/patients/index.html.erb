@@ -1,0 +1,5 @@
+<ul>
+    <% @patients.each do |patient| %>
+        Name: <%= link_to patient.name, patient %> Number of Appointments: <%= patient.appointments.count if patient.appointments %> <br>
+    <% end %>
+</ul>

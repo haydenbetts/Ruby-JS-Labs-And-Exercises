@@ -1,6 +1,7 @@
 Name: <%= @doctor.name %>
 Department: <%= @doctor.department %>
 
-<% if false>
-    <%= collection_select(:doctor, :patient_id, Patient.all, :id, :name) %>
+
+<% @doctor.appointments.each do |appointment|>
+    <%= make_appointment_human_readable(appointment_datetime) %>
 <% end %>
