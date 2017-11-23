@@ -1,1 +1,28 @@
+<%= form_for post do |f| %>
 
+  <%= f.label :title, "Post Title" %>
+  <%= f.text_field :title %>
+  
+  <%= f.label :content, "Post Content" %>
+  <%= f.text_field :content %>
+  
+  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+
+  <%= f.fields_for :categories do |cat| %>
+      <%= cat.label :name,  "Category Name" %>
+      <%= cat.text_field :name %>
+   <% end %>
+
+<%= f.submit %>
+
+<% end %>
+
+  <% if false %>
+  <%= f.fields_for :ingredients do |ing|  %>
+      <%= ing.label :name,  "Ingredient Name" %>
+      <%= ing.text_field :name %>
+      
+      <%= ing.label :quantity, "Ingredient Quantity" %>
+      <%= ing.text_field :quantity %>
+   <% end %>
+  <% end %>
