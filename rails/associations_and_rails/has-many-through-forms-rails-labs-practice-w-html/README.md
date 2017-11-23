@@ -42,3 +42,13 @@ We've looked at setting up the associations behind posts with comments, categori
 + [Lab Review](https://www.youtube.com/watch?v=k7s2LjVF3YY)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/has-many-through-forms-rails-labs' title='Has Many Through Forms Rails Labs'>Has Many Through Forms Rails Labs</a> on Learn.co and start learning to code for free.</p>
+
+##Learned
+Remember that for checkboxes, dropdown form elements, you need to decide what the value="" attribute will be. That is, the value passed to the key defined by the name="" attribute. For text fields... value="" is whatever you type in...
+
+The Post.category_ids = [x,x,x,] method provided
+by has_many is useful for assigning multiple categories at once. It will eventually be translated into something like
+
+Post.category = Category.find(x)...
+
+OHH. WE have to use post[category_ids][] for the name on a form bc the other more nicely named methods like post[categories][] want objects to be passed in. post[category_ids][] makes it so that we don't have to go through the trouble of looking up categories by id ourselves. 
