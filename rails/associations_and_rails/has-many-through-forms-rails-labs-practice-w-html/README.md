@@ -51,4 +51,7 @@ by has_many is useful for assigning multiple categories at once. It will eventua
 
 Post.category = Category.find(x)...
 
-OHH. WE have to use post[category_ids][] for the name on a form bc the other more nicely named methods like post[categories][] want objects to be passed in. post[category_ids][] makes it so that we don't have to go through the trouble of looking up categories by id ourselves. 
+OHH. WE have to use post[category_ids][] for the name on a form bc the other more nicely named methods like post[categories][] want objects to be passed in. post[category_ids][] makes it so that we don't have to go through the trouble of looking up categories by id ourselves. It is a corresponds to a method we will probably use in all forms.
+
+In the Post model, the method of pushing your new categories on categories:
+self.categories << category is inefficient because the push has a return value of all categories...
