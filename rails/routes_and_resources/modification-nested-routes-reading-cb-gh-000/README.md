@@ -256,3 +256,14 @@ You're well on your way to becoming a nested resource ninja!
 ![Ninja Baby](http://i.giphy.com/ErdfMetILIMko.gif)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/modification-nested-routes-reading'>Modifying Nested Resources</a> on Learn.co and start learning to code for free.</p>
+
+Learned: 
+Hahah. Ofc no one will ever actually use a standalone post show page where you choose the author...
+This has to be a nested resource. The pattern of checking for author id in the posts_controller has got 
+to be so so common...
+
+def new
+  @post = Post.new(author_id: params[:author_id])
+end
+
+This lesson has a lot of good and fairly abstract security information.
