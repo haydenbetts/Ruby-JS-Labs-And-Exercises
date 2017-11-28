@@ -11,4 +11,4 @@ Users who have commented:
     <%= user.username %>
 <% end %>
 
-<%= render 'comments/form' %>
+<%= render 'comments/form', comment: @post.comments.build %>

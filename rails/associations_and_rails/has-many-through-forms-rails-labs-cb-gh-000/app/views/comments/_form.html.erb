@@ -1,1 +1,17 @@
-<h2> THIS IS FROM THE COMMENT FORM </h2>
+<%= form_for comment do |f| %>
+
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+
+    <%= f.collection_select :user_id, User.all, :id, :username, include_blank: 'Choose a User to comment as' %>
+
+    <%= f.fields_for :user, comment.build_user do |user_fields| %>
+        <%= user_fields.label :username %>
+        <%= user_fields.text_field :username %>
+    <% end %>
+    
+    <%= f.hidden_field :post_id %>
+
+
+    <%= f.submit %>
+<% end %>
