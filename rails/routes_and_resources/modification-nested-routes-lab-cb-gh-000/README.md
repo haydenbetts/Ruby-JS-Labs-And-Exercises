@@ -30,3 +30,10 @@ along with a `song` instance.
 7. Make sure all tests pass!
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/diy-nested-resources-lab' title='Modifying Nested Resources Lab'>Modifying Nested Resources Lab</a> on Learn.co and start learning to code for free.</p>
+
+Learned: 
+
+Use this construction to make things neater:
+redirect_to artist_songs_path(artist), alert: "song not found" if @song.nil?
+
+The need to pass a hidden field into create forms when dealing w nested resources
