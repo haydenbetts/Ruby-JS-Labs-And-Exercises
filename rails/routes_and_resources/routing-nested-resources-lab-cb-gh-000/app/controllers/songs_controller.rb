@@ -1,14 +1,29 @@
 class SongsController < ApplicationController
   def index
+    # handling nested resources not so easy in the controllers...
     if params[:artist_id]
-      @songs = Artist.find(params[:artist_id]).songs
+      @artist = Artist.find_by(id: params[:artist_id])
+      if @artist.nil?
+        redirect_to artists_path, alert: "Artist not found"
+      else
+        @songs = @artist.songs
+      end
     else
-    @songs = Song.all
+      @songs = Song.all
     end
   end
 
   def show
-    @song = Song.find(params[:id])
+    if params[:artist_id]
+      @artist = Artist.find_by(id: params[:artist_id])
+      if @artist.songs.find_by(id: params[:id]).nil?
+        redirect_to artist_songs_path(@artist), alert: "Song not found"
+      else
+        @song = @artist.songs.find_by(id: params[:id])
+      end
+    else  
+      @song = Song.find(params[:id])
+    end
   end
 
   def new
