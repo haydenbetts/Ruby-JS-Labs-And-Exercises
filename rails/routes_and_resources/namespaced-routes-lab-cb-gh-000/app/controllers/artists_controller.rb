@@ -1,6 +1,14 @@
 class ArtistsController < ApplicationController
+  before_action :set_pref
+
   def index
-    @artists = Artist.all
+    if @pref.artist_sort_order == "DESC"
+      @artists = Artist.order(name: @pref.artist_sort_order)
+    elsif @pref.artist_sort_order == "ASC"
+      @artists = Artist.order(name: @pref.artist_sort_order)
+    else
+      @artists = Artist.all
+    end
   end
 
   def show
@@ -8,7 +16,11 @@ class ArtistsController < ApplicationController
   end
 
   def new
-    @artist = Artist.new
+    if @pref.allow_create_artists
+      @artist = Artist.new
+    else
+      redirect_to artists_path, alert: "You cannot create new artists"
+    end
   end
 
   def create
@@ -48,5 +60,9 @@ class ArtistsController < ApplicationController
 
   def artist_params
     params.require(:artist).permit(:name)
+  end
+
+  def set_pref
+    @pref = Preference.first
   end
 end

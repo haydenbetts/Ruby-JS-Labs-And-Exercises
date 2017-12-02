@@ -15,17 +15,25 @@ class SongsController < ApplicationController
   def show
     if params[:artist_id]
       @artist = Artist.find_by(id: params[:artist_id])
-      @song = @artist.songs.find_by(id: params[:id])
-      if @song.nil?
-        redirect_to artist_songs_path(@artist), alert: "Song not found"
-      end
-    else
+        if @artist.nil?
+          redirect_to artists_path
+        else
+        @song = @artist.songs.find_by(id: params[:id])
+          if @song.nil?
+            redirect_to artist_songs_path(@artist), alert: "Song not found"
+          end
+        end
+      else
       @song = Song.find(params[:id])
     end
   end
 
   def new
-    @song = Song.new
+    if Preference.find(1).allow_create_artists
+      @song = Song.new
+    else
+      redirect_to songs_path, alert: "You cannot create new songs"
+    end
   end
 
   def create
@@ -66,5 +74,5 @@ class SongsController < ApplicationController
   def song_params
     params.require(:song).permit(:title, :artist_name)
   end
-end
 
+end
