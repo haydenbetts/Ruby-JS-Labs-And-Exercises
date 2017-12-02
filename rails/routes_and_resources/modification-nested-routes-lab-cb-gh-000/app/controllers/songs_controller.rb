@@ -49,14 +49,14 @@ class SongsController < ApplicationController
 
   def edit
     if params[:artist_id]
-      artist = Artist.find_by(id: params[:artist_id])
-      if artist.nil?
+      @artist = Artist.find_by(id: params[:artist_id])
+      if @artist.nil?
         redirect_to artists_path, alert: "Artist not found"
-      else 
-        @song = artist.songs.find_by(id: params[:id])
+      else
+        @song = @artist.songs.find_by(id: params[:id])
         # this is the thing were you can tack an if statement onto the end of a
         # line...
-        redirect_to artist_songs_path(artist), alert: "song not found" if @song.nil?
+        redirect_to artist_songs_path(@artist), alert: "song not found" if @song.nil?
       end
     else
     @song = Song.find(params[:id])
@@ -88,4 +88,3 @@ class SongsController < ApplicationController
     params.require(:song).permit(:title, :artist_name, :artist_id)
   end
 end
-
