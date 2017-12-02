@@ -132,3 +132,12 @@ If we reload `/admin/stats`, everything still works, but we've simplified the de
 We learned how to organize our URLs by using `scope` to group them with an `/admin` prefix; how to further organize our controllers using directories and modules; and how to use `scope, module` or `namespace` in our routes.
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/namespaced-routes-reading'>Namespaced Routes</a> on Learn.co and start learning to code for free.</p>
+
+## learned
+In the config file...
+namespace :admin is shorthand for
+scope '/admin', module: 'admin' do
+
+the scope part of this statement defines the url prefix;
+the module part of the statement defines the module that contains
+all of the controllers that will handle the routes associated with that scope.
