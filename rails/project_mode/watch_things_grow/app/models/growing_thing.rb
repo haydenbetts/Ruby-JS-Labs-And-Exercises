@@ -1,0 +1,2 @@
+class GrowingThing < ApplicationRecord
+end
