@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:google_oauth2]
+  has_many :growing_things
+  has_many :days, through: :growing_things
 
   def self.from_omniauth(access_token)
       data = access_token.info
