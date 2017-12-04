@@ -3,5 +3,10 @@
 <div id="calendar">
   <%= calendar do |date| %>
     <%= date.day %>
+    <% growing_thing.days.each do |day| %>
+      <% if day.post_date == date %>
+        <%= link_to 'YES', growing_thing_day_path(growing_thing,day) %>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
