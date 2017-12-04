@@ -1,3 +1,5 @@
 Post_date : <%= @day.post_date %> <br>
 
-NOTE: <%= @day.note %>
+NOTE: <%= @day.note %> <br>
+
+<%= link_to "Edit", edit_growing_thing_day_path(@day.growing_thing, @day) %>

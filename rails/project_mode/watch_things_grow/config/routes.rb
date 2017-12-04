@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :growing_things do
-    resources :days, only: [:show]
+    resources :days, only: [:show, :edit, :update, :new, :create]
   end
   #resources :users, :only => [:show] currenty want to figure out how to correctly namespace this user route
   resources :growing_things

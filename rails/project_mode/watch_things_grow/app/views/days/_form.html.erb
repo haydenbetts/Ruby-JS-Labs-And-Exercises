@@ -1,0 +1,13 @@
+<%= form_for @day  do |f| %>
+
+  <%= f.label :post_date %>
+  <%= f.text_field :post_date %>
+
+
+  <%= f.label :note %>
+  <%= f.text_area :note %>
+
+  <%= f.hidden_field :growing_thing_id %>
+
+  <%= f.submit %>
+<% end %>

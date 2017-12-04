@@ -3,10 +3,13 @@
 <div id="calendar">
   <%= calendar do |date| %>
     <%= date.day %>
+
     <% growing_thing.days.each do |day| %>
       <% if day.post_date == date %>
-        <%= link_to 'YES', growing_thing_day_path(growing_thing,day) %>
+        <%= link_to 'Vw', growing_thing_day_path(growing_thing, day) %>
       <% end %>
     <% end %>
+      <%# TODO THIS IS NOT WORKING!!! %>
+      <%= link_to 'Cr', new_growing_thing_day_path(:growing_thing_id => growing_thing.id, :post_date => date) %>
   <% end %>
 </div>
