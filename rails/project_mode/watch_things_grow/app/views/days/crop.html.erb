@@ -1,0 +1,32 @@
+<h2> Crop Image </h2>
+
+<%# TODO crop functionality not working at all!! But making it work will
+give u some js practice :) %>
+<script type="text/javascript" charset="utf-8">
+
+function readURL(input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+              $('#cropbox').attr('src', e.target.result)
+          };
+          reader.readAsDataURL(input.files[0]);
+          setTimeout(initCropper, 1000);
+      }
+  }
+  function initCropper(){
+      console.log("Came here")
+      var image = document.getElementById('cropbox');
+      var cropper = new Cropper(image, {
+        aspectRatio: 1 / 1,
+        crop: function(e) {
+          console.log(e.detail.x);
+          console.log(e.detail.y);
+        }
+      });
+</script>
+
+<%= image_tag @day.image.url(:large), :id => "cropbox" %>
+
+<div id="cropped_result"></div>
+<button id="crop_button">Crop</button>

@@ -54,7 +54,11 @@ def create
   @day = Day.new(day_params)
 
   if @day.save
-    redirect_to growing_thing_day_path(@day.growing_thing, @day), alert: "Changes saved"
+    if params[:day][:image].blank?
+      redirect_to growing_thing_day_path(@day.growing_thing, @day), alert: "Changes saved"
+    else
+      render :action => "crop"
+    end
   else
     render :new
   end
@@ -63,10 +67,12 @@ end
 def update
   @day = Day.find(params[:id])
 
-  @day.update(day_params)
-
-  if @day.save
-    redirect_to growing_thing_day_path(@day.growing_thing, @day), alert: "Changes saved"
+  if @day.update(day_params)
+    if params[:day][:image].blank?
+      redirect_to growing_thing_day_path(@day.growing_thing, @day), alert: "Changes saved"
+    else
+      render :action => "crop"
+    end
   else
     render :edit
   end
