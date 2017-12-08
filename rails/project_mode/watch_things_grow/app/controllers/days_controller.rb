@@ -76,7 +76,7 @@ end
 private
 
 def day_params
-  params.require(:day).permit(:note, :post_date, :growing_thing_name, :growing_thing_id)
+  params.require(:day).permit(:note, :post_date, :growing_thing_name, :growing_thing_id, :image)
 end
 
 end
