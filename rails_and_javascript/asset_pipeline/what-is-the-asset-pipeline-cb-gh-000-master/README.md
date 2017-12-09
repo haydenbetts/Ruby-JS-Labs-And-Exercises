@@ -108,6 +108,6 @@ The Asset Pipeline is definitely more complex then just serving assets from a pu
 Finally, definitely check out the [keynote where DHH introduces the asset pipeline](https://www.youtube.com/watch?v=cGdCI2HhfAU).
 
 ## Resources
-* [Rails Guides Primer](https://github.com/learn-co-curriculum/what-is-the-asset-pipeline/edit/master/README.md) 
+* [Rails Guides Primer](https://github.com/learn-co-curriculum/what-is-the-asset-pipeline/edit/master/README.md)
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/what-is-the-asset-pipeline'>What Is The Asset Pipeline</a> on Learn.co and start learning to code for free.</p>
