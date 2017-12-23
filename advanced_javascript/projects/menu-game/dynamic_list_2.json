@@ -1,0 +1,28 @@
+[
+          {
+              "title": "Role",
+              "menu": [ {
+                          "title": "Guest",
+                          "menu": [
+                                  {
+                                      "title": "Hayden",
+                                      "menu": null
+                                  },
+                                  {
+                                      "title": "Zeus",
+                                      "menu": null
+                                  },
+                                  {
+                                    "title": "Ivan",
+                                    "menu": null
+                                  }
+                                ]
+                          }
+                      ]
+
+      },
+      {
+          "title": "Cats",
+          "menu": null
+      }
+]

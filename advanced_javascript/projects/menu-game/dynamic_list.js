@@ -130,4 +130,3 @@ list.appendChild(mapArray(menu2))
 //     }
 //   }
 // }
-             
