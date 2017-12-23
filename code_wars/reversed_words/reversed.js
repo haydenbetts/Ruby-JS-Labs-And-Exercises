@@ -6,29 +6,38 @@
 // spinWords( "This is a test") => returns "This is a test"
 // spinWords( "This is another test" )=> returns "This is rehtona test"
 
-function spinWords(string) {
-  var sepd_array = string.split(" ")
-  var reversed_words = [];
+// function spinWords(string) {
+//   var sepd_array = string.split(" ")
+//   var reversed_words = [];
+//
+//   for (var i in sepd_array) {
+//     if (sepd_array[i].length > 4) {
+//       reversed_words.push(reverseWord(sepd_array[i]))
+//     }
+//     else {
+//       reversed_words.push(sepd_array[i])
+//     }
+//   }
+//    return reversed_words.join(" ")
+// }
+//
+// function reverseWord(string) {
+//   var reversed_string = ""
+//
+//   for (var i = string.length - 1; i > -1; i--) {
+//     debugger
+//     reversed_string = reversed_string.concat(string.charAt([i]))
+//   }
+//   return reversed_string
+// }
 
-  for (var i in sepd_array) {
-    if (sepd_array[i].length > 4) {
-      reversed_words.push(reverseWord(sepd_array[i]))
-    }
-    else {
-      reversed_words.push(sepd_array[i])
-    }
-  }
-   return reversed_words.join(" ")
-}
+//attempt 2... with function chaining, map
 
-function reverseWord(string) {
-  var reversed_string = ""
-
-  for (var i = string.length - 1; i > -1; i--) {
-    debugger
-    reversed_string = reversed_string.concat(string.charAt([i]))
-  }
-  return reversed_string
+function spinWords(words) {
+  return words.split(' ').map(function (word) {
+    // remember to return results of if, else
+    return (word.length > 4) ? word.split('').reverse().join('') : word
+  }).join(" ")
 }
 
 spinWords("Hey fellow warriors")
