@@ -1,10 +1,7 @@
 var json = require('./dynamic_list_2.json');
 
-
 function jsonToHtmlList(json_array, accumulator) {
 
-  // just fire if the this function has been called with
-  // an indent. That only happens on recursive calls :)
   if (!accumulator){
     accumulator = document.body
   }
