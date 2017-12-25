@@ -1,13 +1,13 @@
 $(document).ready( function() {
 
     //$("#fetched-json").html(JSON.stringify(fetched_json,null,'\t'))
-    ajax()
+    ajax("Albert Einstein")
 
 })
 
   function showFetchedJSON(json){
-    $("#fetched-json").html(JSON.stringify(json,null,'\t'))
-    $("#parsed-json").html(JSON.stringify(jsonParser(json),null,'\t'))
+    $("#fetched-json").append(JSON.stringify(json,null,'\t'))
+    $("#parsed-json").append(JSON.stringify(jsonParser(json),null,'\t'))
   }
    // parsed-json is id
   function jsonParser(json) {
@@ -39,7 +39,7 @@ $(document).ready( function() {
     // "title": "2dF Galaxy Redshift Survey"
     // }]
     // }
-function ajax() {
+function ajax(keyword) {
   $.ajax({
           // request type ( GET or POST )
     type: "GET",
@@ -50,7 +50,7 @@ function ajax() {
     	"action": "query",
     	"format": "json",
     	"prop": "links",
-    	"titles": "Albert Einstein",
+    	"titles": keyword,
     	"pllimit": "20"
       },
           // The type of data that you're expecting back from the server
