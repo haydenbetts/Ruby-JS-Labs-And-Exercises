@@ -1,6 +1,14 @@
-require 'pry'
+require 'byebug'
 
 WIN_COMBINATIONS = [
+  [0,1,2],
+  [3,4,5],
+  [6,7,8],
+  [0,3,6],
+  [1,4,7],
+  [2,5,8],
+  [0,4,8],
+  [6,4,2]
 ]
 
 board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
@@ -17,14 +25,28 @@ def game_loop(board, player)
 
   if valid_move?(board, input)
     # for now I am just going to try updating the board
+    # this outer if loop looks bad
     if player == 1
       board[input] = "X"
-      player = 2
-      game_loop(board, player)
+
+      # pass win_combinations and current board to game_over?
+      if game_over?(board, player)
+        puts "Player #{player} wins!"
+      else
+        player = 2
+        game_loop(board, player)
+      end
+
     else
       board[input] = "O"
-      player = 1
-      game_loop(board, player)
+
+      if game_over?(board, player)
+        puts "Player #{player} wins!"
+      else
+        player = 1
+        game_loop(board, player)
+      end
+
     end
   else
     game_loop(board, player)
@@ -49,6 +71,19 @@ def valid_move?(board, input)
     true
   else
     false
+  end
+end
+
+def game_over?(board, player)
+  case player
+  when 1
+    WIN_COMBINATIONS.detect do |combo|
+      board[combo[0]] == "X" && board[combo[1]] == "X" && board[combo[2]] == "X"
+    end
+    when 2
+      WIN_COMBINATIONS.detect do |combo|
+        board[combo[0]] == "O" && board[combo[1]] == "O" && board[combo[2]] == "O"
+      end
   end
 end
 
