@@ -87,6 +87,62 @@ def game_over?(board, player)
   end
 end
 
+def draw?(board)
+end
+
+# figure out how to eliminate the player inputs
+
+def play(board)
+  # while !over?(board)
+  #   turn(board)
+  # end
+  # if won?(board)
+  #   puts "Congratulations #{winner(board)}!"
+  # elsif draw?(board)
+  #   puts "Cats Game!"
+  # end
+end
+
+def display_board(board)
+end
+
+def valid_move?(board, index)
+end
+
+def won?(board)
+end
+
+def full?(board)
+end
+
+def draw?(board)
+end
+
+def over?(board)
+end
+
+def input_to_index(user_input)
+end
+
+def turn(board)
+end
+
+def position_taken?(board, index)
+end
+
+def current_player(board)
+end
+
+def turn_count(board)
+end
+
+def move(board, index, player)
+end
+
+def winner(board)
+end
+
+
 # 1. Display greeting
 # 2. display board
 # 3. Ask for input from player x
