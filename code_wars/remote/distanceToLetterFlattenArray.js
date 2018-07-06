@@ -26,26 +26,20 @@ return clickCount;
 
 }
 
+function clicksToLetter(keyboard, index, letter) {
+  flattenedKeyboard = keyboard.flat();
+  clickCount = 0;
 
-function clicksToLetter(keyboard, row, column, letter) {
-
-  rowCount = 0;
-
-  for (row; row < keyboard.length; row++) {
-    for (column; column < keyboard[row].length; column++) {
-      if (keyboard[row][column] == letter) {
-        return {
-          clickCount: rowCount + column + 1,
-          row: row,
-          column: column,
-        }
-      }
+  for (index; index < flattenedKeyboard.length; index++) {
+    if (flattenedKeyboard[index] == letter) {
+      return {
+       clickCount: clickCount,
+       index: index
+     }
+     clickCount++;
     }
-      rowCount += 1;
-      column = 0;
-      if (row == keyboard.length - 1) {
-        row = -1;
-        // incrementing happens at end of loop!!!!
-      }
+    if (index == flattenedKeyboard.length - 1) {
+      index = -1;
     }
   }
+}
