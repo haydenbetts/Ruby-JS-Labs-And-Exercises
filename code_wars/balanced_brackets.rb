@@ -1,24 +1,23 @@
-def balanced?(array)
+require 'pry'
 
-    matching_brackets = {"]" => "[",
+def balanced?(queue, stack = [])
+    matching_brackets = {
+                        "]" => "[",
                         "}" => "{",
-                         ")" => "("}
+                        ")" => "("
+                    }
 
-    if array.length === 0
+     if queue.length == 0 && stack.length == 0
         puts "YES"
-    elsif array.length % 2 != 0
-        puts "NO"
-    elsif array.length >= 2 && array[0] == matching_brackets[array[1]]
-        binding.pry
-        balanced?(array[2.. -1])
+    elsif ["[", "(", "{"].include?(queue[0]) 
+        stack.push(queue.shift)
+        balanced?(queue, stack)
+    elsif matching_brackets[queue[0]] == stack.last
+        queue.shift
+        stack.pop
+        balanced?(queue, stack)
     else
-        if array.first == matching_brackets[array.last]
-            array.shift
-            array.pop
-            balanced?(array)
-        else
-            puts "NO"
-        end
+        puts "NO"
     end
 end
 
@@ -28,3 +27,9 @@ end
 # ()[] YES
 # [()][{}]{[({})[]]} NOPE
 # ((){)} YES
+
+balanced?("{()[][{}]}".split(''))
+balanced?("({}{[]})({)}".split(''))
+balanced?("()[]".split(''))
+balanced?("[()][{}]{[({})[]]}".split(''))
+balanced?("((){)}".split(''))
