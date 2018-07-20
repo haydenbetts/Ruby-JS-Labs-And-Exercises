@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
 
-std::string greet(const std::string& n)
+void greet(const std::string& n)
 {
     std::string greeting = "Hello, " + n + " how are you doing today?";
-    std::cout << greeting;
+    std::cout << greeting << std::endl;
 }
 
 int main()
